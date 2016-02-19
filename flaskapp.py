@@ -6,7 +6,7 @@ from boto3.session import Session
 
 session = Session(aws_access_key_id = '',
                   aws_secret_access_key = '',
-                  region_name = 'us-west-2')
+                  region_name = '')
 s3 = session.resource('s3')
 bucketname = 'roopesh1'
 LoginFile = 'names.txt'
