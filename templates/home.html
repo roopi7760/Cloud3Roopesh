@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Home</title>
+</head>
+<body>
+<div name="welcome" align="center">
+    <p><strong>{{username}} </strong> </p>
+    <p style="color:red"> {{ message }} </p>
+</div>
+
+<div name="formupload" align="center">
+    <form action="/home" method=post enctype=multipart/form-data>
+      <table>
+          <tr><td><p>Upload Image:</p></td> <td><input type=file name="file"></td>
+          <td> <input type=submit name="submit" value="Upload"></td></tr>
+          <tr>
+              <td colspan="2"><p>View Images:</p></td>
+              <td><input type="submit" name="submit" value="View"></td>
+          </tr>
+          <tr>
+              <td colspan="2" align="center"><a href="/">Logout</a> </td>
+          </tr>
+      </table>
+        </form>
+</div>
+
+</body>
+</html>

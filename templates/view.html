@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>List of Images</title>
+    <script>
+        function myFunction(filename)
+        {
+        document.getElementById("message").innerHTML = "";
+        document.getElementById("inner").innerHTML = "<img src='https://s3-us-west-2.amazonaws.com/roopesh1/" + filename + "' width='600px' height= '500px'  />" ;
+        }
+
+        function redirect()
+        {
+        window.location = "/home" ;
+        }
+    </script>
+</head>
+<body>
+<div id ="message">
+   <p style="color:red" align="center"> {{ message }} </p>
+</div>
+<div>
+   <div><a href="/home"> <input type="button"  value="Back"/> </a></div>
+<table cellpadding="2.0" width="50%" border="1.0" align="left">
+    <caption align="center"><b>List of Images</b></caption>
+    <tr><th>Image Name</th><th>Modified Date</th><th>Action</th></tr>
+    {% set  ALLOWED_EXTENSIONS = ['png', 'jpg', 'jpeg', 'gif'] %}
+    {% for image in s3.Bucket(bucketname).objects.all(): %}
+        {% set imageext = image.key %}
+        {% set imageext = imageext.split('.')[-1] %}
+        {% if imageext in ALLOWED_EXTENSIONS :%}
+            {% set obj = s3.Object(bucket_name= bucketname, key = image.key) %}
+            {% set res = obj.last_modified %}
+
+    <tr><td> <img src="https://s3-us-west-2.amazonaws.com/roopesh1/{{image.key}}" width="70px" height="70px" onclick= "myFunction('{{image.key}}')"  />{{ image.key }}</td> <td><time>{{res }}</time></td>
+        <td> <a href="/delete/{{image.key}}"><input type="button" value="Delete"/></a>  <a href="/download/{{image.key}}" ><input type="button" value="Download"/></a></td> </tr>
+    {% endif %}
+    {% endfor %}
+</table>
+    <div align="right" id = "inner">
+    </div>
+    &nbsp;
+</div>
+
+</body>
+</html>

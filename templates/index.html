@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Login</title>
+</head>
+<style>
+ tr {
+   height:40px;
+ }
+</style>
+<body>
+<h1 align="center">Welcome to Amazon Image Server</h1>
+<div name="message" align="center">
+    <p style="color:red"><b>{{message}}</b></p>
+</div>
+<div name="formdiv" align="center">
+<form name="form1" action="" method="POST" autocomplete="off">
+    <table cellpadding="2px">
+        <caption align="center" ><b>Please Login to upload images.</b></caption>
+        <tr>
+            <td><b>User Name:</b></td>
+            <td><input type="text" name="username" size="25"> </td>
+        </tr>
+        <tr>
+            <td colspan="2" align="center"><input type="submit" name="submit" value="Login"></td>
+        </tr>
+    </table>
+</form>
+</div>
+</body>
+</html>
