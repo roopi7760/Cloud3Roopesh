@@ -32,12 +32,6 @@ def upload_file(filename):
 def download_photo(filename):
     return redirect('https://s3-us-west-2.amazonaws.com/<bucketname>/'+filename)
 
-#@application.route('/view/<filename>')
-#def view_photo(filename):
-    #s3.Bucket(bucketname).download_file(filename, UPLOAD_FOLDER + '/' + filename)
-    #return redirect('https://s3-us-west-2.amazonaws.com/roopesh1/' + filename) #send_from_directory(UPLOAD_FOLDER, filename)
-#    return render_template('viewimage.html',filename = filename)
-
 @application.route('/delete/<filename>')
 def delete_photo(filename):
     s3.Object(bucketname, filename).delete()
