@@ -8,8 +8,8 @@ session = Session(aws_access_key_id = '',
                   aws_secret_access_key = '',
                   region_name = '')
 s3 = session.resource('s3')
-bucketname = 'roopesh1'
-LoginFile = 'names.txt'
+bucketname = ''
+LoginFile = ''
 application = Flask(__name__)
 application.config.from_object(__name__)
 
@@ -30,7 +30,7 @@ def upload_file(filename):
 
 @application.route('/download/<filename>')
 def download_photo(filename):
-    return redirect('https://s3-us-west-2.amazonaws.com/roopesh1/'+filename)
+    return redirect('https://s3-us-west-2.amazonaws.com/<bucketname>/'+filename)
 
 #@application.route('/view/<filename>')
 #def view_photo(filename):
